@@ -108,7 +108,7 @@ class Midjourney_Client(XMChat):
         """
         mj_proxy_url = self.proxy_url
         if mj_proxy_url is None or not (mj_proxy_url.startswith("http://") or mj_proxy_url.startswith("https://")):
-            raise Exception('please set MIDJOURNEY_PROXY_API_BASE in ENV or in config.json')
+            raise Exception('please set MIDJOURNEY_PROXY_API_BASE in ENV or in ./conf/config.json')
 
         auth_ = self.auth_mj()
         if auth_.get('error'):

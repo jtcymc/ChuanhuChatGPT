@@ -64,7 +64,7 @@ if os.path.exists("api_key.txt"):
     with open("api_key.txt", "r", encoding="utf-8") as f:
         config["openai_api_key"] = f.read().strip()
     os.rename("api_key.txt", "api_key(deprecated).txt")
-    with open("config.json", "w", encoding='utf-8') as f:
+    with open("./conf/config.json", "w", encoding='utf-8') as f:
         json.dump(config, f, indent=4, ensure_ascii=False)
 
 if os.path.exists("auth.json"):
@@ -80,7 +80,7 @@ if os.path.exists("auth.json"):
                 sys.exit(1)
     config["users"] = auth_list
     os.rename("auth.json", "auth(deprecated).json")
-    with open("config.json", "w", encoding='utf-8') as f:
+    with open("./conf/config.json", "w", encoding='utf-8') as f:
         json.dump(config, f, indent=4, ensure_ascii=False)
 
 # 处理docker if we are running in Docker

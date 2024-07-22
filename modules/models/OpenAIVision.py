@@ -89,7 +89,7 @@ class OpenAIVisionClient(BaseLLMModel):
             except Exception as e:
                 # logging.error(f"获取API使用情况失败: " + str(e))
                 if "Invalid authorization header" in str(e):
-                    return i18n("**获取API使用情况失败**，需在填写`config.json`中正确填写sensitive_id")
+                    return i18n("**获取API使用情况失败**，需在填写`./conf/config.json`中正确填写sensitive_id")
                 elif "Incorrect API key provided: sess" in str(e):
                     return i18n("**获取API使用情况失败**，sensitive_id错误或已过期")
                 return i18n("**获取API使用情况失败**")

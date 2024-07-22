@@ -837,7 +837,7 @@ def beautify_err_msg(err_msg):
 
 def auth_from_conf(username, password):
     try:
-        with open("config.json", "r", encoding="utf-8") as f:
+        with open("./conf/config.json", "r", encoding="utf-8") as f:
             conf = json.load(f)
         # Create a dictionary with usernames as keys and passwords as values
         user_dict = {user[0]: user[1] for user in conf["users"]}
@@ -937,7 +937,7 @@ def generate_result_string(config_item, config_value):
 
 
 class SetupWizard:
-    def __init__(self, file_path="config.json") -> None:
+    def __init__(self, file_path="./conf/config.json") -> None:
         self.config = {}
         self.file_path = file_path
         language = input('请问是否需要更改语言？可选："auto", "zh_CN", "en_US", "ja_JP", "ko_KR", "sv_SE", "ru_RU", "vi_VN"\nChange the language? Options: "auto", "zh_CN", "en_US", "ja_JP", "ko_KR", "sv_SE", "ru_RU", "vi_VN"\n目前正在使用中文(zh_CN)\nCurrently using Chinese(zh_CN)\n如果需要，请输入你想用的语言的代码：\nIf you need, please enter the code of the language you want to use:')
@@ -948,7 +948,7 @@ class SetupWizard:
         print(
             i18n("正在进行首次设置，请按照提示进行配置，配置将会被保存在")
             + colorama.Fore.GREEN
-            + " config.json "
+            + " ./conf/config.json "
             + colorama.Style.RESET_ALL
             + i18n("中。")
         )
@@ -1057,7 +1057,7 @@ class SetupWizard:
 
 
 def setup_wizard():
-    if not os.path.exists("config.json"):
+    if not os.path.exists("./conf/config.json"):
         wizard = SetupWizard()
         flag = False
         # 设置openai_api_key。

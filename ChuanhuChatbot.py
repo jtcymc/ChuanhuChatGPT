@@ -402,7 +402,7 @@ with gr.Blocks(theme=small_and_beautiful_theme) as demo:
 
                     with gr.Tab(i18n("网络")):
                         gr.Markdown(
-                            i18n("⚠️ 为保证API-Key安全，请在配置文件`config.json`中修改网络设置"), elem_id="netsetting-warning")
+                            i18n("⚠️ 为保证API-Key安全，请在配置文件`./conf/config.json`中修改网络设置"), elem_id="netsetting-warning")
                         default_btn = gr.Button(i18n("🔙 恢复默认网络设置"))
                         # 网络代理
                         proxyTxt = gr.Textbox(
@@ -819,7 +819,7 @@ if __name__ == "__main__":
     setup_wizard()
     demo.queue().launch(
         allowed_paths=["history", "web_assets"],
-        blocked_paths=["config.json", "files", "models", "lora", "modules"],
+        blocked_paths=["./conf/config.json", "files", "models", "lora", "modules"],
         server_name=server_name,
         server_port=server_port,
         share=share,

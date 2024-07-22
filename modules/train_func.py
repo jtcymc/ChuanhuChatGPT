@@ -136,7 +136,7 @@ def add_to_models():
         if i not in presets.MODELS:
             presets.MODELS.append(i)
 
-    with open('config.json', 'r') as f:
+    with open('./conf/config.json', 'r') as f:
         data = commentjson.load(f)
     if 'extra_models' in data:
         for i in extra_models:
@@ -150,7 +150,7 @@ def add_to_models():
                 data['extra_model_metadata'][i] = {"model_name": i, "model_type": "OpenAIVision"}
     else:
         data['extra_model_metadata'] = {i: {"model_name": i, "model_type": "OpenAIVision"} for i in extra_models}
-    with open('config.json', 'w') as f:
+    with open('./conf/config.json', 'w') as f:
         commentjson.dump(data, f, indent=4)
 
     return gr.update(choices=presets.MODELS), f"成功添加了 {len(succeeded_jobs)} 个模型。"
